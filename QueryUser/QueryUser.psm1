@@ -109,7 +109,7 @@ if($Idle) {
 if($Vacant) {
 	$VacantComputers = @()
 	$ComputerName | foreach {
-		if(!$UserLogons | Where-Object ComputerName -eq $_) {
+		if(!($UserLogons | Where-Object ComputerName -eq $_)) {
 			$VacantComputers += $_
 		}
 	}
