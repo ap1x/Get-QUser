@@ -83,7 +83,7 @@ $RemoteScript = {
 			SessionName = $_.SESSIONNAME -replace '\.'
 			ID = [int]$_.ID
 			State = $_.STATE -replace 'Disc', 'Disconnected'
-			IdleTime = $_.'IDLE TIME' -replace '\.'
+			IdleTime = $_.'IDLE TIME' -replace '\.' -replace 'none'
 			LogonTime = $_.'LOGON TIME' | Get-Date -Format 'MM/dd/yyyy HH:mm'
 		}
 	}
