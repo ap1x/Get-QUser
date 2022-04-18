@@ -67,8 +67,11 @@ Param(
 
 $RemoteScript = {
 	$CompName = hostname
+	$UserLogonLines = quser 2>&1
+	
+	if($UserLogonLines -like 'No user exists for*') { return }
 
-	quser 2>&1 | foreach {
+	$UserLogonLines | foreach {
 		$_ -replace '^ +' `
 		-replace '>' `
 		-replace '^([^ ]+) +([0-9]+)', '$1  .  $2' `
