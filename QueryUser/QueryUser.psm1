@@ -71,7 +71,7 @@ $RemoteScript = {
 	quser 2>&1 | foreach {
 		$_ -replace '^ +' `
 		-replace '>' `
-		-replace '^([a-zA-Z0-9]+) +([0-9]+)', '$1  .  $2' `
+		-replace '^([^ ]+) +([0-9]+)', '$1  .  $2' `
 		-replace '  +', ','
 	} | ConvertFrom-Csv | foreach {
 		[PSCustomObject]@{
